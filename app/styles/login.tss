@@ -1,0 +1,31 @@
+"#big_logo": {
+  top: 0,
+  width: 262,
+  height: 227,
+  backgroundImage: '/images/green_cross_logo.png'
+},
+
+'#username': {
+  top: 5,
+  hintText: 'username',
+  autocorrect: false,
+  autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+  returnKeyType: Ti.UI.RETURNKEY_NEXT
+},
+
+'#password': {
+  top: 5,
+  hintText: 'password',
+  autocorrect: false,
+  autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+  returnKeyType: Ti.UI.RETURNKEY_GO,
+  passwordMask: true
+},
+
+'#login': {
+  top: 5,
+  width: 147,
+  height: 49,
+  backgroundImage: '/images/enter_btn.png',
+  backgroundSelectedImage: '/images/enter_btn_p.png'
+}

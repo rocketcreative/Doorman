@@ -1,0 +1,10 @@
+<Alloy>
+  <Window id="win">
+    <View id="container" class="vertical">
+      <View id="small_logo" />
+      <Label>Swipe Identification card now or enter manually</Label>
+      <TextField id="id_number" />
+      <Button id="submit"></Button>
+    </View>
+  </Window>
+</Alloy>

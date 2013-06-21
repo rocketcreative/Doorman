@@ -1,0 +1,56 @@
+"Window": {
+  navBarHidden: 'true',
+  backgroundColor: '#8DA35B',
+  backgroundRepeat: true
+},
+
+"Button": {
+  height: 43,
+  width: 289,
+  borderWidth: 0.5,
+  borderRadius: 4,
+  borderColor: '#ddd',
+  font: { fontSize: 12, fontWeight: 'bold' },
+  color: '#333'
+},
+
+"TextField": {
+  height: 45,
+  paddingLeft: 10,
+  width: 240,
+  backgroundColor: '#E4EDD0',
+  color: '#444',
+  font: { fontSize: 16, fontWeight: 'normal' }
+},
+
+"#small_logo": {
+  top: 0,
+  width: 262,
+  height: 87,
+  backgroundImage: '/images/small_green_cross_logo.png'
+},
+
+"#container": {
+  top: 0
+},
+
+".vertical": {
+  layout: 'vertical'
+},
+
+".section": {
+  height: Ti.UI.SIZE,
+  width: Ti.UI.SIZE,
+  layout: 'vertical',
+  top: 10
+},
+
+".form_row": {
+  width: 289,
+  height: Ti.UI.SIZE,
+  top: 10
+},
+
+".form_row_switch": {
+  right: 0
+}

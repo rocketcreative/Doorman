@@ -1,0 +1,10 @@
+<Alloy>
+  <Window id="win">
+    <View id="container" class="vertical">
+      <View id="big_logo" />
+      <TextField id="username" />
+      <TextField id="password" />
+      <Button id="login"></Button>
+    </View>
+  </Window>
+</Alloy>

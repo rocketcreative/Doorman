@@ -1,0 +1,22 @@
+"#big_logo": {
+  top: 0,
+  width: 262,
+  height: 227,
+  backgroundImage: '/images/green_cross_logo.png'
+},
+
+'#id_number': {
+  top: 5,
+  hintText: 'id number',
+  autocorrect: false,
+  autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+  returnKeyType: Ti.UI.RETURNKEY_GO
+},
+
+'#submit': {
+  top: 5,
+  width: 147,
+  height: 49,
+  backgroundImage: '/images/submit_btn.png',
+  backgroundSelectedImage: '/images/submit_btn_p.png'
+}
