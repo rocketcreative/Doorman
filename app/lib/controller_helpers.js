@@ -24,7 +24,10 @@ module.exports = (function() {
   //+ openView :: String -> Action(UI)
     //TODO why doesn't invoke('open') work here?
     //, openView = compose(invoke('open'), getView, Alloy.createController)
-    , openView = compose('.open()', log2("3"), getView, log2("2"), Alloy.createController, log2("1"))
+    , openView = function(v) {
+      var result = compose('.open()', getView, Alloy.createController)(v)
+      return OpenWin(result);
+    }
 
   //+ openView_ :: String -> a -> Action(UI)
     , openView_ = function(name, args) {
@@ -34,6 +37,18 @@ module.exports = (function() {
   //+ closeView :: String -> Alloy.Controller -> Action(UI)
     , closeView = function(name, c) {
         c[name].close();
+      }.autoCurry()
+
+  //+ removeView :: Ti.UI.View -> RemoveView(Ti.UI.VIEW)
+    , removeView = function(parent, c) {
+        parent.remove(c);
+        return RemoveView(c);
+      }.autoCurry()
+
+  //+ addView :: Ti.UI.View -> AddView(Ti.UI.VIEW)
+    , addView = function(parent, c) {
+        parent.add(c);
+        return AddView(c);
       }.autoCurry()
 
   //+ openInTab :: String -> String -> Action(UI)
@@ -99,6 +114,8 @@ module.exports = (function() {
          , createView: createView
          , createView_: createView_
          , closeView: closeView
+         , removeView: removeView
+         , addView: addView
          , openInTab: openInTab
          , openInTab_: openInTab_
          , openEmailDialog: openEmailDialog

@@ -28,7 +28,7 @@ Constructor = function(f) {
   return x;
 }
 
-makeType = function(options) {
+makeType = function(name, options) {
   f = function(v){ this.val = v; }
   var type = Constructor(f);
   if(options && options.deriving) {
@@ -36,6 +36,7 @@ makeType = function(options) {
       typeclass.generic(type)
     });
   }
+  
   return type;
 }
 

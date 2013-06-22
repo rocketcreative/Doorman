@@ -2,7 +2,7 @@ var xmlrpc = require('/xmlrpc')
 		, username = 'admin'
 		, pwd = '8T%FcWQDpr#t'
 		, dbname = 'GreenCross'
-		, uid = null
+		, uid = 1
     , client = null
 		;
 
@@ -25,7 +25,16 @@ var exec = function(service, name, args, cb) {
     .param(name)
     .param(service)
     .param(args)
-    .end(cb);
+    .end(function(res){
+      var xmldata=Titanium.XML.parseString(res.text);
+      var val = xmldata.documentElement.getElementsByTagName("int");
+      var result = null;
+
+      if(val.item(0)) {
+        result = val.item(0).text;
+      }
+      cb(result);
+    });
 }
 
 var login = function(usernm, pass, cb) {  

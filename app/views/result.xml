@@ -1,0 +1,8 @@
+<Alloy>
+	<View id="result_view" class="vertical">
+		<ImageView id="image" />
+		<Label id="label" />
+		<Label id="reason" />
+		<Label id="tap_to_dismiss">Tap To Dismiss</Label>
+  </View>
+</Alloy>

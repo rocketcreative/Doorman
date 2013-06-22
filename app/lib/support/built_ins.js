@@ -5,8 +5,12 @@ require('/support/functor');
 require('/support/applicative');
 require('/support/monad');
 
-IO = makeType({deriving: [Functor]});
-Maybe = makeType();
+IO = makeType('IO', {deriving: [Functor]});
+OpenWin = newType(IO, 'OpenWin');
+RemoveView = newType(IO, 'RemoveView');
+AddView = newType(IO, 'AddView');
+
+Maybe = makeType('Maybe');
 Either = Constructor(function(left, right){
   this.left = left;
   this.right = right;

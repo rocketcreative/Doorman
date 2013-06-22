@@ -1,0 +1,14 @@
+"#result_view": {
+  top: 120,
+  backgroundColor: '#8DA35B'
+},
+
+"#image": {
+	top: 0,
+	width: 177,
+	height: 177
+},
+
+"#tap_to_dismiss": {
+	top: 10
+}

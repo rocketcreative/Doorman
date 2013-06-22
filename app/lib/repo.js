@@ -17,10 +17,10 @@ module.exports = (function() {
         return promise;
       }
 
-  //+ findByDriversLicense :: String -> Promise(User)
+  //+ findByDriversLicense :: String -> Promise(UID|Null)
     , findByDriversLicense = function(dl) {
         var promise = new Promise()
-          , args = [['drivers_license', '=', dl]];
+          , args = [['driver_license', '=', dl]];
 
         open_erp.exec('search', 'res.partner', args, function(res) {
           Ti.API.info(res);
