@@ -1,5 +1,6 @@
 var Magtek = require('com.looprecur.cardswiper')
-	, connected = false;
+	, connected = false
+	, hasAttached = false;
 
 
 // Magtek.addEventListener('connected', function(e) {
@@ -59,12 +60,9 @@ var enable = function() {
 	Magtek.enabled = true;
 }
 
-var tryConnect = function(acc, n) {
-	if(!acc.connected) Magtek.enabled = true;
-	return acc;
-}
-
 var addEventListener = function(name, fn) {
+	if(hasAttached) return;
+	hasAttached = true;
 	// if(name == "error") return errorListener(fn);
 	// if(name == "swipe") return successListener(fn);
 
@@ -72,14 +70,14 @@ var addEventListener = function(name, fn) {
 	Ti.API.info('=======ADDING LISTENERS=========');
 	Magtek.attachListeners({
 		success: function(e){
-			alert(e);
+			// alert(e);
 			fn(e)
 		},
 		status: function(e) {
 			Ti.API.info('=======STATUS CHANGE=========');
 			Ti.API.info(JSON.stringify(e));
-			alert(e);
-			reduce(tryConnect, e, [1,2,3]);
+			// alert(e);
+			// fn(e)
 		}
 	});
 

@@ -3,6 +3,7 @@
 var xmlrpc = require('/xmlrpc')
     , base_url = 'http://50.57.71.28:8069/xmlrpc/'
     , dbname = 'GreenCross'
+    , cfg = {}
 		;
 
 //+ setUp :: OpenErpConfig -> StateChange(OpenErpConfig)
@@ -30,28 +31,18 @@ var setUp = function(config) {
     }
 
 //+ exec :: String -> String -> [[String]] -> (Int -> b) -> undefined
-  
   , exec = function(service, name, args, cb) {  
-      client = makeClient('object');
+      var client = makeClient('object');
 
-      client
+    	client
         .call('execute')
         .param(dbname)
-        .param(cfg.uid)
+        .param(Number(cfg.uid))
         .param(cfg.pwd)
         .param(name)
         .param(service)
         .param(args)
-        .end(function(res){
-          var xmldata=Titanium.XML.parseString(res.text);
-          var val = xmldata.documentElement.getElementsByTagName("int");
-          var result = null;
-
-          if(val.item(0)) {
-            result = val.item(0).text;
-          }
-          cb(result);
-        });
+        .end(compose(cb, getXmlResponse));
     }
 
 //+ login :: String -> String -> (OpenErpConfig -> b) -> undefined

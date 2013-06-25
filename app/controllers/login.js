@@ -27,7 +27,7 @@ var openStart = compose(close.p($.win), openView('start'))
                    )
 
 //+ authenticate :: Event -> Promise(Either(String, CloseWin(OpenWin(UID))))
-  , authenticate = compose(fmap(compose(openOrAlert, log2("LOGGED IN"))), doLogin)
+  , authenticate = compose(fmap(openOrAlert), doLogin)
 
 //+ slideUp :: Event -> Animation(Event)
   , slideUp = UIHelpers.slideUp({top: -140, duration: 300}, $.container)

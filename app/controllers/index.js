@@ -6,12 +6,14 @@ var Remember = require('remember')
   , open = Aly.openView_
   ;
 
-//+ startOrLogin :: Maybe(OpenErpConfig) -> OpenWin([login, Null]|[start, OpenErpConfig])
+//+ startOrLogin :: Maybe(OpenErpConfig) -> OpenWin(Null|OpenErpConfig)
 var startOrLogin = compose(maybe(open('login'), open('start')), log2("startOr"))
 
-  //+ startApplication :: StateChange(OpenWin([login, Null]|[start, OpenErpConfig]))
-  , startApplication = compose( fmap(startOrLogin)
-  														, OpenErp.setUp
+//+ setupAndOpenApp :: ReadFile(Maybe(OpenErp)) -> [OpenWin(Null|OpenErpConfig), StateChange(ReadFile(Maybe(OpenErp)))]
+	, setupAndOpenApp = parallel(fmap(startOrLogin), fmap(fmap(OpenErp.setUp)))
+
+//+ startApplication :: [OpenWin(Null|OpenErpConfig), StateChange(ReadFile(Maybe(OpenErp)))]
+  , startApplication = compose( setupAndOpenApp
   														, Remember.get('open_erp_config')
   														)
   ;

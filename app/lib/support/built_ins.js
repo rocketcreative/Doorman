@@ -29,6 +29,7 @@ Functor(IO, {
 UI = makeType('UI', {deriving: [Functor]});
 Mutation = makeType('Mutation', {deriving: [Functor]});
 ReadFile = newType(UI, 'ReadFile',{deriving: [Functor]}); 
+WriteFile = newType(UI, 'WriteFile',{deriving: [Functor]}); 
 OpenWin = newType(UI, 'OpenWin', {deriving: [Functor]});
 CloseWin = newType(UI, 'CloseWin', {deriving: [Functor]});
 RemoveView = newType(UI, 'RemoveView', {deriving: [Functor]});

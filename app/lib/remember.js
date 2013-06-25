@@ -5,15 +5,15 @@ module.exports = (function() {
   var get = function(x) {
         return function(y) {
           var a =  Ti.App.Properties.getString(x);
-          var result = a ? JSON.parse(a) : {};
-          return ReadFile(result);
+          var result = a ? JSON.parse(a) : null;
+          return ReadFile(Maybe(result));
         }
       }
   
   //+ set :: String -> JSON
     , set = function(name, x) {
         Ti.App.Properties.setString(name, JSON.stringify(x));
-        return x;
+        return WriteFile(x);
       }.autoCurry()
   
   //+ forget :: String -> IO
