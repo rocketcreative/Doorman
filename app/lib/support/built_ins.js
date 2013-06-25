@@ -5,10 +5,46 @@ require('/support/functor');
 require('/support/applicative');
 require('/support/monad');
 
-IO = makeType('IO', {deriving: [Functor]});
-OpenWin = newType(IO, 'OpenWin');
-RemoveView = newType(IO, 'RemoveView');
-AddView = newType(IO, 'AddView');
+runIO = function(io) {
+	var result = io.runIO();
+	return (result && result.runIO) ? runIO(result) : result;
+}
+
+IO = Constructor(function(val, sideEffect) {
+	self = this;
+	self.val = val;
+	self.sideEffect = sideEffect;
+	self.runIO = function() {
+		return sideEffect(self.val);
+	}
+});
+
+Functor(IO, {
+	fmap: function(f) {
+		return IO(this.val, compose(f, this.sideEffect))
+	}
+})
+
+// Trying crap out...eventually move this
+UI = makeType('UI', {deriving: [Functor]});
+Mutation = makeType('Mutation', {deriving: [Functor]});
+ReadFile = newType(UI, 'ReadFile',{deriving: [Functor]}); 
+OpenWin = newType(UI, 'OpenWin', {deriving: [Functor]});
+CloseWin = newType(UI, 'CloseWin', {deriving: [Functor]});
+RemoveView = newType(UI, 'RemoveView', {deriving: [Functor]});
+AddView = newType(UI, 'AddView', {deriving: [Functor]});
+StateChange = newType(Mutation, 'StateChange', {deriving: [Functor]});
+
+IOTransformer = function(fn, type) {
+	return function() {
+		fn.apply(null, arguments); // side effect
+		return type.apply(null, arguments);
+	}.autoCurry(fn.arity)
+}
+
+Function.prototype.toIO = function(type) {
+	return IOTransformer(this, type);
+}
 
 Maybe = makeType('Maybe');
 Either = Constructor(function(left, right){
@@ -18,7 +54,7 @@ Either = Constructor(function(left, right){
 
 //+ maybe :: b -> (a -> b) -> Maybe a -> b
 maybe = function(f, g, x) {
-	return x.val ? g(x.val) : f();
+	return x.val ? g(x.val) : f(null);
 }.autoCurry();
 
 //+ either :: (a -> c) -> (b -> c) -> Either a b -> c

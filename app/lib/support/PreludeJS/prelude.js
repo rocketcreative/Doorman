@@ -257,6 +257,13 @@
         return val;
       }.autoCurry()
 
+      //+ setVals :: Object -> Object -> a
+    , setVals = function(obj1, obj2) {
+        var target = {}
+        for(k in obj1) { target[k] = obj1[k](obj2); }
+        return target;
+      }.autoCurry()
+
       //+ getVal :: String -> Object -> a
     , getVal = function(attribute, x) {
         return function(){ return x[attribute]; };
@@ -378,6 +385,7 @@
   prelude.andand = andand;
   prelude.oror = oror;
   prelude.setVal = setVal;
+  prelude.setVals = setVals;
   prelude.getVal = getVal;
   prelude.merge = merge;
   prelude.unionWith = unionWith;

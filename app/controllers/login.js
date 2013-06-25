@@ -5,44 +5,35 @@ require("support/built_ins");
 
 var Repo = require('repo')
   , Remember = require('remember')
+  , UIHelpers = require('ui_helpers')
   , Aly = require('controller_helpers')
+  , close = Aly.close
+  , openView = Aly.openView_
   ;
 
-//+ closeWin :: OpenWin(UID) -> CloseWin(OpenWin(UID))
-var closeWin = Aly.close.p($.win)
+//+ openStart :: OpenErpConfig -> CloseWin(OpenWin(OpenErpConfig))
+var openStart = compose(close.p($.win), openView('start'))
 
-//+ openApp :: UID -> CloseWin(OpenWin(UID))
-  , openApp = compose(closeWin, Aly.openView_('start'))
+//+ setConfig :: OpenErpConfig -> WriteFile(OpenErpConfig)
+  , setConfig = Remember.set('open_erp_config')
 
-//+ rememberUser :: UID -> IO(Maybe(UID))
-  , rememberUser = Remember.set('current_uid')
-
-//+ openOrAlert : Either(String, UID) -> CloseWin(OpenWin(UID))
-  , openOrAlert = either(alert, parallel(openApp, rememberUser))
+//+ openOrAlert : Either(String, OpenErpConfig) -> [CloseWin(OpenWin(OpenErpConfig)), WriteFile(OpenErpConfig)]
+  , openOrAlert = either(alert, parallel(openStart, setConfig))
 
 //+ doLogin :: Event -> Promise(Either(String, UID))
   , doLogin = liftA( Repo.login
-                   , compose(pluck('value'), getVal('username', $))
-                   , compose(pluck('value'), getVal('password', $))
+                   , getVal('value', $.username)
+                   , getVal('value', $.password)
                    )
 
 //+ authenticate :: Event -> Promise(Either(String, CloseWin(OpenWin(UID))))
-  , authenticate = compose(fmap(openOrAlert), doLogin)
-
-//+ isLoggedIn :: IO(Maybe(UID))
-  , isLoggedIn = Remember.get('current_uid')
+  , authenticate = compose(fmap(compose(openOrAlert, log2("LOGGED IN"))), doLogin)
 
 //+ slideUp :: Event -> Animation(Event)
-  , slideUp = function(e) {
-      if($.container.top >= 0) {
-        $.container.animate({top: -140, duration: 300}, function(){
-          $.container.top = -140;
-        });
-      }
-    }
+  , slideUp = UIHelpers.slideUp({top: -140, duration: 300}, $.container)
 
   //+ focusPassword :: Event -> Focus(TextField)
-  , focusPassword = compose(invoke('focus'), getVal('password', $))
+  , focusPassword = compose(invoke('focus'), K($.password))
   ;
 
 $.username.addEventListener('focus', slideUp);

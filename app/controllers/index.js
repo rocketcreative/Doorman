@@ -1,15 +1,19 @@
 require("support/built_ins");
 
 var Remember = require('remember')
+	, OpenErp = require('open_erp_client')
   , Aly = require('controller_helpers')
   , open = Aly.openView_
   ;
 
-//+ openAppOrLogin :: Maybe(UID) -> OpenWin(UID|Null)
-var openAppOrLogin = maybe(open('login'), open('start'))
+//+ startOrLogin :: Maybe(OpenErpConfig) -> OpenWin([login, Null]|[start, OpenErpConfig])
+var startOrLogin = compose(maybe(open('login'), open('start')), log2("startOr"))
 
-//+ startApplication :: IO(OpenWin(UID|Null))
-  , startApplication = compose(fmap(openAppOrLogin), Remember.get('current_uid'))
+  //+ startApplication :: StateChange(OpenWin([login, Null]|[start, OpenErpConfig]))
+  , startApplication = compose( fmap(startOrLogin)
+  														, OpenErp.setUp
+  														, Remember.get('open_erp_config')
+  														)
   ;
 
 startApplication();

@@ -37,11 +37,12 @@ makeType = function(name, options) {
     });
   }
   
+  type.prototype.inspect = _superInspect(name);
   return type;
 }
 
 
-newType = function(superclass, name) {
+newType = function(superclass, name, options) {
   var constructr = superclass;
   var x = makeType();
 
@@ -50,6 +51,12 @@ newType = function(superclass, name) {
   x.prototype.valueOf = function() { return this.val; }
   x.prototype.toString = function() { return this.val.toString(); }
   x.prototype.inspect = _superInspect(name);
+
+  if(options && options.deriving) {
+    options.deriving.map(function(typeclass){
+      typeclass.generic(x)
+    });
+  }
 
   var globl = _getGlobal();
   globl[name] = x;

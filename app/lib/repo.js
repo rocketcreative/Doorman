@@ -5,7 +5,7 @@ module.exports = (function() {
     , Promise = require("/support/promise")
     ;
 
-  //+ login :: String -> String -> Promise(Maybe(UID))
+  //+ login :: String -> String -> Promise(Either(User))
   var login = function(username, password) {
         var promise = new Promise();
 
@@ -19,8 +19,9 @@ module.exports = (function() {
 
   //+ findByDriversLicense :: String -> Promise(UID|Null)
     , findByDriversLicense = function(dl) {
+        log2("DL IS", dl)
         var promise = new Promise()
-          , args = [['driver_license', '=', dl]];
+          , args = [['driver_license', '=', dl];
 
         open_erp.exec('search', 'res.partner', args, function(res) {
           Ti.API.info(res);

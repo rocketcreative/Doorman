@@ -1,12 +1,12 @@
 module.exports = (function() {
   require("support/PreludeJS/prelude").expose();
 
-  //+ get :: String -> (_ -> JSON || 'undefined')
+  //+ get :: String -> (JSON -> b)
   var get = function(x) {
-        return function() {
+        return function(y) {
           var a =  Ti.App.Properties.getString(x);
-          var result = a ? Maybe(JSON.parse(a)) : Maybe(null);
-          return IO(result);
+          var result = a ? JSON.parse(a) : {};
+          return ReadFile(result);
         }
       }
   

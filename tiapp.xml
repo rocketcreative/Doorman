@@ -14,7 +14,7 @@
     <statusbar-hidden>false</statusbar-hidden>
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
-    <analytics>true</analytics>
+    <analytics>false</analytics>
     <guid>21c69726-3a72-4c4b-b161-440c8dfff62a</guid>
     <property name="ti.ui.defaultunit" type="string">system</property>
     <iphone>
@@ -35,7 +35,9 @@
         </splash>
         <theme>default</theme>
     </mobileweb>
-    <modules/>
+    <modules>
+        <module platform="iphone" version="0.1">com.looprecur.cardswiper</module>
+    </modules>
     <deployment-targets>
         <target device="tizen">false</target>
         <target device="blackberry">false</target>
