@@ -15,11 +15,9 @@ $.result_view.addEventListener('click', removeView.p(parent, $.result_view));
 (function(){
 	if(uid) {
 		$.image.image = "/images/welcome_check.png";
-		$.label.text = "WELCOME";
-		$.reason.text = "";
+		$.message.image = "/images/welcome_text.png";
 	} else {
 		$.image.image = "/images/no_access_x.png";
-		$.label.text = "NO ACCESS";
-		$.reason.text = "USER NOT FOUND OR NOT ACTIVE";
+		$.message.image = "/images/no_access_text.png";
 	}
 })();
