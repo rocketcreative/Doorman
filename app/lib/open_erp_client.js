@@ -30,9 +30,11 @@ var setUp = function(config) {
     }
 
 //+ exec :: String -> String -> [[String]] -> (Int -> b) -> undefined
+  
   , exec = function(service, name, args, cb) {  
-      var client = makeClient('object');
-    	client
+      client = makeClient('object');
+
+      client
         .call('execute')
         .param(dbname)
         .param(cfg.uid)
@@ -40,7 +42,16 @@ var setUp = function(config) {
         .param(name)
         .param(service)
         .param(args)
-        .end(compose(cb, getXmlResponse));
+        .end(function(res){
+          var xmldata=Titanium.XML.parseString(res.text);
+          var val = xmldata.documentElement.getElementsByTagName("int");
+          var result = null;
+
+          if(val.item(0)) {
+            result = val.item(0).text;
+          }
+          cb(result);
+        });
     }
 
 //+ login :: String -> String -> (OpenErpConfig -> b) -> undefined
