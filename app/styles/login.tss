@@ -5,25 +5,37 @@
   backgroundImage: '/images/green_cross_logo.png'
 },
 
+"Label": {
+  height: Ti.UI.SIZE,
+  width: Ti.UI.SIZE,
+  font: { fontSize: 20, fontWeight: 'normal' },
+  color: '#fff',
+  top:40
+},
+
 '#username': {
-  top: 5,
+  top: 20,
   hintText: 'username',
   autocorrect: false,
   autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
-  returnKeyType: Ti.UI.RETURNKEY_NEXT
+  returnKeyType: Ti.UI.RETURNKEY_NEXT,
+  backgroundImage:'/images/user_full_field.png',
+  paddingLeft:40
 },
 
 '#password': {
-  top: 5,
+  top: 20,
   hintText: 'password',
   autocorrect: false,
   autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
   returnKeyType: Ti.UI.RETURNKEY_GO,
-  passwordMask: true
+  passwordMask: true,
+  backgroundImage:'/images/password_full_field.png',
+  paddingLeft:40
 },
 
 '#login': {
-  top: 5,
+  top: 20,
   width: 147,
   height: 49,
   backgroundImage: '/images/enter_btn.png',
