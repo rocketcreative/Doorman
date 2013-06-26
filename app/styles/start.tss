@@ -1,13 +1,27 @@
+'#logout': {
+  right:20
+},
+
+'#swipe': {
+  top:0,
+  width:"90%",
+  font: { fontSize: 20, fontWeight: 'bold' },
+  textAlign:"center"
+},
+
 '#id_number': {
-  top: 5,
+  top: 20,
   hintText: 'id number',
   autocorrect: false,
   autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
-  returnKeyType: Ti.UI.RETURNKEY_GO
+  returnKeyType: Ti.UI.RETURNKEY_GO,
+  backgroundImage:'/images/cc_field_full.png',
+  paddingLeft:45
 },
 
+
 '#submit': {
-  top: 5,
+  top: 20,
   width: 147,
   height: 49,
   backgroundImage: '/images/submit_btn.png',

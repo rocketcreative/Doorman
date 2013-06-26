@@ -2,6 +2,7 @@
   <Window id="win">
     <View id="container" class="vertical">
       <View id="big_logo" />
+      <Label id="please_log_in">Please Log In</Label>
       <TextField id="username" />
       <TextField id="password" />
       <Button id="login"></Button>

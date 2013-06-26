@@ -13,7 +13,7 @@
 		  	</View>
 		  </View>
 	    <View id="main_body" class="vertical">
-	      <Label>Swipe Identification card now or enter manually</Label>
+	      <Label id="swipe">Swipe Identification card now or enter manually</Label>
 	      <TextField id="id_number" />
 	      <Button id="submit"></Button>
 	    </View>
