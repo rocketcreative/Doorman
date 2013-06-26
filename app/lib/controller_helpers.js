@@ -26,12 +26,12 @@ module.exports = (function() {
     //, openView = compose(invoke('open'), getView, Alloy.createController)
     , openView = compose('.open()', getView, Alloy.createController).toIO(OpenWin)
 
-  //+ openView_ :: String -> a -> Action(UI)
+  //+ openView_ :: String -> [a] -> OpenWin(String, Array)
     , openView_ = function(name, args) {
         getView(Alloy.createController(name, args)).open();
       }.autoCurry().toIO(OpenWin)
 
-  //+ closeView :: String -> Alloy.Controller -> Action(UI)
+  //+ closeView :: String -> Alloy.Controller -> CloseWin(String, Ti.UI.View)
     , closeView = function(name, c) {
         c[name].close();
       }.autoCurry().toIO(CloseWin)

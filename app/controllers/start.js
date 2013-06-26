@@ -28,7 +28,7 @@ var createResult = function(found_user_id) {
 //+ setIdNumber :: String -> UIValueChange(String)
 	, setIdNumber = setVal('value', $.id_number)
 
-//+ lookupUser :: Event -> Promise(UID|Null)
+//+ lookupUser :: Event -> Promise(CreateView(AddedView(Ti.UI.Window, UID|Null)))
 	, lookupUser = compose( fmap(showResult)
 												, Repo.findByDriversLicense
 												, getIdNumber
