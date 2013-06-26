@@ -102,6 +102,10 @@ module.exports = (function() {
     , close = function(x, args) {
         return x.close(args);
       }
+
+    , fireEvent = function(name, el, data) {
+        return el.fireEvent(name, data);
+      }.autoCurry();
     ;
 
   return { createController_: createController_
@@ -119,5 +123,6 @@ module.exports = (function() {
          , setRows: setRows
          , getRows: getRows
          , close: close
+         , fireEvent: fireEvent
          };
 })();

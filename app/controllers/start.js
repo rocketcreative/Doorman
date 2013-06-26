@@ -32,6 +32,7 @@ var createResult = function(found_user_id) {
 	, lookupUser = compose( fmap(showResult)
 												, Repo.findByDriversLicense
 												, getIdNumber
+												, function(){ $.id_number.blur(); }
 												)
 
 //+ openLogin :: Event -> OpenWin(CloseWin(Event))
