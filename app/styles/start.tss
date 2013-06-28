@@ -21,18 +21,21 @@
 
 '#buttons': {
   top: 20,
-  height: 49
+  height: 49,
+  width: Ti.UI.FILL
 }
 
 '#submit': {
   width: 147,
   height: Ti.UI.FILL,
+  right: 2,
   backgroundImage: '/images/submit_btn.png',
   backgroundSelectedImage: '/images/submit_btn_p.png'
 }
 
 '#scan': {
   width: 147,
+  left: 2,
   height: Ti.UI.FILL,
   backgroundImage: '/images/blank_btn.png',
   backgroundSelectedImage: '/images/blank_btn_p.png'

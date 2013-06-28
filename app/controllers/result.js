@@ -7,13 +7,13 @@ var Aly = require('controller_helpers')
 	, removeView = Aly.removeView
 	, args = arguments[0]
 	, parent = args.parent
-	, uid = args.uid
+	, expiry_date = args.expiry_date
   ;
 
 $.result_view.addEventListener('click', removeView.p(parent, $.result_view));
 
 (function(){
-	if(uid) {
+	if(expiry_date >= (new Date())) {
 		$.image.image = "/images/welcome_check.png";
 		$.message.image = "/images/welcome_text.png";
 	} else {

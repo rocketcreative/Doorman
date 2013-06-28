@@ -24,7 +24,10 @@ module.exports = (function() {
 
         open_erp.exec('search', 'res.partner', args, function(res) {
           Ti.API.info(res);
-          promise.resolve(res);
+          open_erp.exec('read', 'res.partner', [res], function(r) {
+            Ti.API.info(r);
+            promise.resolve(r);
+          });
         });
 
         return promise;

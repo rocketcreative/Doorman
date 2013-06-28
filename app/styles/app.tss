@@ -42,7 +42,7 @@
 },
 
 "#main_body":{
-  top: 50,
+  top: '8%',
   width: Ti.UI.SIZE,
   height: Ti.UI.SIZE
 },

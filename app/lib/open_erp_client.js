@@ -30,9 +30,22 @@ var setUp = function(config) {
       if(val.item(0)) return val.item(0).text;
     }
 
+  , parseDate = function(input) {
+      var parts = input.split('-');
+      return new Date(parts[0], parts[1]-1, parts[2]);
+    }
+
+  , checkForExpired = function(res) {
+      var found = res.text.match(/expiry_date[\s\S]*<string>(\d+-\d+-\d+)<\/string>/)
+      if(found && found[1]) {
+        return parseDate(found[1]);
+      }
+    }
+
 //+ exec :: String -> String -> [[String]] -> (Int -> b) -> undefined
   , exec = function(service, name, args, cb) {  
       var client = makeClient('object');
+      var parseMethod = (service == "read") ? checkForExpired : getXmlResponse;
 
     	client
         .call('execute')
@@ -42,7 +55,7 @@ var setUp = function(config) {
         .param(name)
         .param(service)
         .param(args)
-        .end(compose(cb, getXmlResponse));
+        .end(compose(cb, parseMethod));
     }
 
 //+ login :: String -> String -> (OpenErpConfig -> b) -> undefined
