@@ -10,11 +10,11 @@
   width: Ti.UI.SIZE,
   font: { fontSize: 20, fontWeight: 'normal' },
   color: '#fff',
-  top:40
+  top:"3%"
 },
 
 '#username': {
-  top: 20,
+  top: "3%",
   hintText: 'username',
   autocorrect: false,
   autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
@@ -24,7 +24,7 @@
 },
 
 '#password': {
-  top: 20,
+  top: "3%",
   hintText: 'password',
   autocorrect: false,
   autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
@@ -35,7 +35,7 @@
 },
 
 '#login': {
-  top: 20,
+  top: "3%",
   width: 147,
   height: 49,
   backgroundImage: '/images/enter_btn.png',

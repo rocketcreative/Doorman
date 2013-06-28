@@ -15,7 +15,10 @@
 	    <View id="main_body" class="vertical">
 	      <Label id="swipe">Swipe Identification card now or enter manually</Label>
 	      <TextField id="id_number" />
-	      <Button id="submit"></Button>
+	      <View class="horizontal" id="buttons">
+	      	<Button id="scan">Scan</Button>
+	      	<Button id="submit"></Button>
+	      </View>
 	    </View>
     </View>
   </Window>

@@ -19,11 +19,21 @@
   paddingLeft:45
 },
 
+'#buttons': {
+  top: 20,
+  height: 49
+}
 
 '#submit': {
-  top: 20,
   width: 147,
-  height: 49,
+  height: Ti.UI.FILL,
   backgroundImage: '/images/submit_btn.png',
   backgroundSelectedImage: '/images/submit_btn_p.png'
+}
+
+'#scan': {
+  width: 147,
+  height: Ti.UI.FILL,
+  backgroundImage: '/images/blank_btn.png',
+  backgroundSelectedImage: '/images/blank_btn_p.png'
 }

@@ -1,7 +1,7 @@
 //+ @deftype OpenErpConfig = {uid: String, username: String, pwd: String}
 
 var xmlrpc = require('/xmlrpc')
-    , base_url = 'http://50.57.71.28:8069/xmlrpc/'
+    , base_url = 'http://206.251.242.138:8069/xmlrpc/'
     , dbname = 'GreenCross'
     , cfg = {}
 		;

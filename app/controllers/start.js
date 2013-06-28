@@ -6,7 +6,7 @@ require("support/built_ins");
 var Repo = require('repo')
 	, Remember = require('remember')
 	, Aly = require('controller_helpers')
-	, Swiper = require('swiper')
+	, Barcode = require('barcode')
 	, close = Aly.close
   , openView = Aly.openView_
 	, createView = Aly.createView
@@ -28,7 +28,7 @@ var createResult = function(found_user_id) {
 //+ setIdNumber :: String -> UIValueChange(String)
 	, setIdNumber = setVal('value', $.id_number)
 
-//+ lookupUser :: Event -> Promise(CreateView(AddedView(Ti.UI.Window, UID|Null)))
+//+ lookupUser :: _ -> Promise(CreateView(AddedView(Ti.UI.Window, UID|Null)))
 	, lookupUser = compose( fmap(showResult)
 												, Repo.findByDriversLicense
 												, getIdNumber
@@ -40,14 +40,23 @@ var createResult = function(found_user_id) {
 
 //+ doLogout :: Event -> [CloseWin(OpenWin(Event)), WriteFile(null)]
   , doLogout = parallel(openLogin, Remember.set.p('open_erp_config', null))
+
+//+ barcodeSuccess :: {result: String} -> UIValueChange(String)
+  , barcodeSuccess = compose(	lookupUser
+  													, setIdNumber
+  													, drop(7)
+  													, pluck('result')
+  													)
+
+//+ captureBarcode :: Event -> Action(String)
+  , captureBarcode = Barcode.capture.p({success: barcodeSuccess, error: alert});
 	;
 
 $.submit.addEventListener('click', lookupUser);
 $.id_number.addEventListener('return', lookupUser);
 $.logout.addEventListener('click', doLogout);
-Swiper.addEventListener('swipe', setIdNumber);
-$.win.addEventListener('focus', Swiper.enable);
-// Swiper.addEventListener('error', alert);
+$.scan.addEventListener('click', captureBarcode);
+
 
 (function(){
 	$.user_id.text = logged_in_user_id;

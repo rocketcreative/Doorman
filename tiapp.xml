@@ -36,7 +36,7 @@
         <theme>default</theme>
     </mobileweb>
     <modules>
-        <module platform="iphone" version="0.1">com.looprecur.cardswiper</module>
+        <module platform="iphone" version="1.8.3">ti.barcode</module>
     </modules>
     <deployment-targets>
         <target device="tizen">false</target>

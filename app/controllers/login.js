@@ -30,10 +30,13 @@ var openStart = compose(close.p($.win), openView('start'))
   , authenticate = compose(fmap(openOrAlert), doLogin)
 
 //+ slideUp :: Event -> Animation(Event)
-  , slideUp = UIHelpers.slideUp({top: -140, duration: 300}, $.container)
+  , slideUp = UIHelpers.slideUp({top: -230, duration: 300}, $.container)
 
   //+ focusPassword :: Event -> Focus(TextField)
   , focusPassword = compose(invoke('focus'), K($.password))
+
+//+ blurFields :: Event -> Blur([TextField])
+  , blurFields = compose(map(invoke('blur')), K([$.username, $.password]))
   ;
 
 $.username.addEventListener('focus', slideUp);
@@ -41,4 +44,4 @@ $.password.addEventListener('focus', slideUp);
 $.username.addEventListener('return', focusPassword);
 $.login.addEventListener('click', authenticate);
 $.password.addEventListener('return', authenticate);
-
+$.container.addEventListener('slideDown', blurFields)

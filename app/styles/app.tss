@@ -51,6 +51,10 @@
   layout: 'vertical'
 },
 
+".horizontal": {
+  layout: 'horizontal'
+},
+
 ".top_icons": {
   layout: 'horizontal',
   width: Ti.UI.SIZE,
