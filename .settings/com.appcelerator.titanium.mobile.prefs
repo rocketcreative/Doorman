@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+iosLaunchConfigurationAttributes/ATTR_MINIFY=false
+iosLaunchConfigurationAttributes/ATTR_PROJECT_NAME=Greencross
+iosLaunchConfigurationAttributes/appid=com.greencross.doorman
+iosLaunchConfigurationAttributes/certificate=Bay Area Green Cross Dispensary Inc
+iosLaunchConfigurationAttributes/distribute_path=/Users/taylorsmith/Desktop
+iosLaunchConfigurationAttributes/keychain=
+iosLaunchConfigurationAttributes/output_format=ipa
+iosLaunchConfigurationAttributes/sdk_version=6.1
+iosLaunchConfigurationAttributes/uuid=80F3283A-F651-4947-B005-6232448676E0
