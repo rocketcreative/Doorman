@@ -45,7 +45,7 @@ var createResult = function(expiry_date) {
 //+ barcodeSuccess :: {result: String} -> UIValueChange(String)
   , barcodeSuccess = compose(	lookupUser
   													, setIdNumber
-  													, drop(7)
+  													, drop(9)
   													, pluck('result')
   													)
 
