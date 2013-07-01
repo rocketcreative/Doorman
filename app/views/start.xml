@@ -16,7 +16,7 @@
 	      <Label id="swipe">Swipe Identification card now or enter manually</Label>
 	      <TextField id="id_number" />
 	      <View id="buttons">
-	      	<Button id="scan">Scan</Button>
+	      	<Button id="scan"></Button>
 	      	<Button id="submit"></Button>
 	      </View>
 	    </View>
