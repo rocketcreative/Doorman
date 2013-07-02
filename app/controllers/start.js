@@ -42,10 +42,15 @@ var createResult = function(expiry_date) {
 //+ doLogout :: Event -> [CloseWin(OpenWin(Event)), WriteFile(null)]
   , doLogout = parallel(openLogin, Remember.set.p('open_erp_config', null))
 
+  , chooseResult = ifelse( match(/0401$/)
+  											 , compose(pluck(1), match(/\w(\d{7})\d{4}/))
+  											 , drop(9)
+  											 )
+
 //+ barcodeSuccess :: {result: String} -> UIValueChange(String)
   , barcodeSuccess = compose(	lookupUser
   													, setIdNumber
-  													, drop(9)
+  													, chooseResult
   													, pluck('result')
   													)
 
