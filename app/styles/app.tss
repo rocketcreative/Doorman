@@ -14,9 +14,6 @@
 "Button": {
   height: 43,
   width: 289,
-  borderWidth: 0.5,
-  borderRadius: 4,
-  borderColor: '#ddd',
   font: { fontSize: 12, fontWeight: 'bold' },
   color: '#333'
 },
@@ -24,8 +21,8 @@
 "TextField": {
   height: 45,
   paddingLeft: 10,
-  width: 240,
-  backgroundColor: '#E4EDD0',
+  width: 254,
+  // backgroundColor: '#E4EDD0',
   color: '#444',
   font: { fontSize: 16, fontWeight: 'normal' }
 },

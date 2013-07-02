@@ -26,17 +26,17 @@
 }
 
 '#submit': {
-  width: 147,
+  width: 125,
   height: Ti.UI.FILL,
-  right: 2,
+  right: 30,
   backgroundImage: '/images/submit_btn.png',
   backgroundSelectedImage: '/images/submit_btn_p.png'
 }
 
 '#scan': {
-  width: 147,
-  left: 2,
+  width: 125,
+  left: 30,
   height: Ti.UI.FILL,
-  backgroundImage: '/images/blank_btn.png',
-  backgroundSelectedImage: '/images/blank_btn_p.png'
+  backgroundImage: '/images/scan_btn.png',
+  backgroundSelectedImage: '/images/scan_btn_p.png'
 }
