@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+iosLaunchConfigurationAttributes/ATTR_MINIFY=true
+iosLaunchConfigurationAttributes/ATTR_PROJECT_NAME=Doorman
+iosLaunchConfigurationAttributes/appid=com.greencross.doorman
+iosLaunchConfigurationAttributes/certificate=Bay Area Green Cross Dispensary Inc
+iosLaunchConfigurationAttributes/distribute_path=/Users/corourke/Desktop
+iosLaunchConfigurationAttributes/keychain=/Users/corourke/Library/Keychains/login.keychain
+iosLaunchConfigurationAttributes/output_format=ipa
+iosLaunchConfigurationAttributes/sdk_version=8.0
+iosLaunchConfigurationAttributes/uuid=0844b708-50bf-4d69-91dc-c8e84bdecd9c

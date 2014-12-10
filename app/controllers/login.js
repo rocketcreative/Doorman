@@ -44,4 +44,4 @@ $.password.addEventListener('focus', slideUp);
 $.username.addEventListener('return', focusPassword);
 $.login.addEventListener('click', authenticate);
 $.password.addEventListener('return', authenticate);
-$.container.addEventListener('slideDown', blurFields)
+$.container.addEventListener('slideDown', blurFields);

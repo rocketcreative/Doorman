@@ -74,7 +74,7 @@ var Barcode = (function(){
       });
 		}
 				
-		return {capture: capture}
+		return {capture: capture};
 	}
 
 	return iOSBarcode();
